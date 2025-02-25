@@ -1,0 +1,11 @@
+# llm = LLM(model="facebook/opt-125m")
+
+LLM构造函数：
+  1. 根据参数列表创建一个EngineArgs类的实例，使用self.get_engine_class()获取llm_engine类；
+  2. 根据engine_args调用函数self.llm_engine = self.engine_class.from_engine_args(
+            engine_args, usage_context=UsageContext.LLM_CLASS) 创建一个llm_engine类的实例对象；
+  3. self.request_counter = Counter()创建request_counter，后续每个prompt调用一次推理，request_counter累加一次作为request_id；
+
+# outputs = llm.generate(prompts, sampling_params)
+  调用_validate_and_add_reques根据prompt构造request;
+  
